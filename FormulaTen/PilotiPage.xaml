@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormulaTen.PilotiPage"
+             Title="PilotiPage">
+    <Grid RowDefinitions="80, *">
+        <Border Margin="0" StrokeThickness="1">
+            <Grid Grid.Row="0" ColumnDefinitions="*, 250, *" HorizontalOptions="CenterAndExpand" >
+                <Button Grid.Column="0"  BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" BorderColor="Black" CornerRadius="100" Clicked="MinusButton_Clicked" FontSize="20" Text="-" x:Name="MinusButton" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" MinimumWidthRequest="50"/>
+                <Entry Grid.Column="1" x:Name="ValueEntry" FontSize="30" HorizontalTextAlignment="Center"  Text="{Binding _valueEntry}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Button Grid.Column="2"  BackgroundColor="Transparent" TextColor="Black" BorderWidth="1" BorderColor="Black" CornerRadius="100" Clicked="PlusButton_Clicked" FontSize="20" Text="+" x:Name="PlusButton" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" MinimumWidthRequest="50"/>
+            </Grid>
+        </Border>
+
+        <CollectionView Grid.Row="1"  ItemsSource="{Binding _Drivers}" x:Name="CollectionGareView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Border Margin="0" Padding="0">
+                        <Grid RowDefinitions="*,*, *" Padding="10,10,0,0">
+                            <Label Grid.Row="0" HorizontalOptions="Center" FontSize="18" TextTransform="Uppercase" FontAttributes="Bold" Text="{Binding GivenName}"/>
+                            <Label Grid.Row="1" HorizontalOptions="Start" FontSize="15" Text="{Binding DateOfBirth}"/>
+
+                            <!--<Label Grid.Row="2" BackgroundColor="#de7504" HorizontalOptions="End" FontSize="20" Padding="20,2" Text="X" FontAttributes="Bold" FontSize="25"-->
+                            <Image Grid.Row="2" 
+                                       Source="flag.png" 
+                                       Aspect="AspectFit" 
+                                       HeightRequest="40" 
+                                       WidthRequest="50"
+                                       HorizontalOptions="End"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
